@@ -1,6 +1,6 @@
 # Name - Ryan Alumkal
 # Grade - 12
-# Description - 
+# Description - Calcuates factorials from a specified number
 # Date -  October 31, 2022
 
 def factorial(n): #calculates factorial
@@ -12,7 +12,7 @@ def factorial(n): #calculates factorial
 def get_n(): #user input
     while True:
         try:
-            n = int(input("Enter a number:")) #gets user input
+            n = int(input("Enter a number: ")) #gets user input
             if n >0:
                 return n #if valid
             else:
