@@ -4,7 +4,7 @@
 # Date -  October 31, 2022
 
 def factorial(n): #calculates factorial
-    factorials =1 #starts of at 1
+    factorials = 1
     for i in range(1,n+1): #continues numbers till user number
         factorials = i *factorials  #math
     return factorials #returns factorial
@@ -21,7 +21,7 @@ def get_n(): #user input
             print("Enter a valid integer number") #if invalid 
 
 def output(n, factorials): #outputs factorial 
-    print(f"The factorials of {n} is {factorials}")
+    print(f"The factorial of {n} is {factorials}")
 
 def user_continue(): #if user wants to continue or not 
     while True: #loop
@@ -41,7 +41,8 @@ def main(): #main function
         factorials = factorial(n) #calculates factorial
         output(n, factorials) #outputs factorial 
         choice = user_continue() #user choice (if they want to continue)
-        if choice == "N" or choice == "n": #if user does not want to continue 
+        if choice == "N" or choice == "n": #if user does not want to continue
+            print("Thank you for using the program") 
             break
 if __name__ == '__main__': 
     main()
