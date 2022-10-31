@@ -43,7 +43,10 @@ def main(): #main function
         choice = user_continue() #user choice (if they want to continue)
         if choice == "N" or choice == "n": #if user does not want to continue
             print("Thank you for using the program") 
-            break
+            break #ends program
+        
+#Main program
 if __name__ == '__main__': 
-    main()
+    main() 
     
+#END 
