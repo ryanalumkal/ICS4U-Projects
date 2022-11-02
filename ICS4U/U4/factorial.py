@@ -14,12 +14,13 @@ def get_n(): #user input
         try:
             n = int(input("Enter a number: ")) #gets user input
             if n >0:
-                return n #if valid
+                #return n #if valid
+                break
             else:
                 print("Enter a valid integer number greate than 0") #if invalid 
         except:
             print("Enter a valid integer number") #if invalid 
-
+    return n
 def output(n, factorials): #outputs factorial 
     print(f"The factorial of {n} is {factorials}")
 
