@@ -17,7 +17,7 @@ def get_n(): #user input
                 #return n #if valid
                 break
             else:
-                print("Enter a valid integer number greate than 0") #if invalid 
+                print("Enter a valid integer number greater than 0") #if invalid 
         except:
             print("Enter a valid integer number") #if invalid 
     return n
