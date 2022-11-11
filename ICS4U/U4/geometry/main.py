@@ -16,16 +16,19 @@ def choice():
     return choice
 
 def user_input(choice):
-    length = int(input("Enter the length:")) 
-    width = int(input("Enter the width: "))
-    height = int(input("Enter the height: "))
-    if choice == 1:
-        geometry.surface_area_rectangular_prism(length, width, height)
-    if choice == 2: #if cylinder
-        radius = int(input("Enter the radius: "))
-        geometry.surface_area_cylinder(length,width,height,radius)
-        #return radius
-    #return length, width, height
+    while True:
+        try:
+            if choice == 1: #if rectangle 
+                width = int(input("Enter the width: "))
+                length = int(input("Enter the length: "))
+                height = int(input("Enter the height: ")) 
+                geometry.surface_area_rectangular_prism(length, width, height)      
+            if choice == 2: #if cylinder
+                radius = int(input("Enter the radius: "))
+                height = int(input("Enter the height: ")) 
+                geometry.surface_area_cylinder(height,radius)
+        except:
+            print("Print a correct integer value")
 
 def main():
     user_choice = choice()
