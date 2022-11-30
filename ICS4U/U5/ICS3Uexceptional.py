@@ -17,12 +17,12 @@ def user_input():
 def standard_deviation(x):
     num = 0
     value = 0
-    print(x)
+    #print(x)
     for i in range(1,len(x)+1):
-        print(i)
+        #print(i)
         num += x[i-1]
     u = num/len(x) #average
-    print(u)
+    #print(u)
     for n in range(1,len(x)+1):
         squared_error.append((x[n-1]-u)**2)
     for m in range(1,len(squared_error)+1):
@@ -38,7 +38,7 @@ def standard_deviation(x):
     return u, deviation
     
 def exception(u,deviation, value):
-    if value >(u+deviation)  or  value <(u-deviation):
+    if value > (u+deviation)  or  value < (u-deviation):
         print(f"Your value {value} is an exception of {u} with a standard deviation of {deviation}")
     else:
         print(f"Your value {value} is not an exception of {u} with a standard deviation of {deviation}")
