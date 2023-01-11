@@ -1,2 +1,4 @@
-# ICS4U
-ISC4U projects 
+# ICS4U-Projects
+ICS4U projects 
+
+Projects from high school(Grade 12) computer science course.
