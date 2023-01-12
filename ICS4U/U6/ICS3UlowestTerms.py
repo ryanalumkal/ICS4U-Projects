@@ -1,9 +1,8 @@
 # Name - Ryan Alumkal
 # Grade - 12
 # Description - Returns a user-inputted fraction in lowest terms 
-# Date -  
+# Date -  1/12/2023
 
-#Ask if user wants to continue 
 
 def user_input(): #Asks user for an input    
     while True:
@@ -12,22 +11,21 @@ def user_input(): #Asks user for an input
             count_num = 0
             fraction = input("Enter a positive fraction in the format 'n/d': ")
             for i in range (len(fraction)):
-                if fraction[i] != "/":
-                    count +=1
-                #for n in range(10):
-                    #if fraction[i] != (str(n)):
-                       # print(n)
-                        #count_num +=1
-            if count_divide == len(fraction):
-                #if count_num > 1:
-                continue
-            else:
-                return fraction
+                if fraction[i] == "/":
+                    count_divide +=1
+                try:
+                    int(fraction[i])
+                except:
+                    count_num +=1
+                        
+            if count_divide == 1:
+                if count_num == 1:
+                    return fraction
         except:
             print("Enter a proper value")
-
+    
 def numbers(fraction):
-    num = list(fraction.strip())
+    num = list(fraction.rstrip())
     n = ""
     d = ""
     for i in range (len(num)):
@@ -67,7 +65,6 @@ def main():
         fraction = user_input()
         values = numbers(fraction)
         gcd = greatest_common_divisor(values[0], values[1])
-        print(gcd)
         answer = lowest_terms(values[0], values[1], gcd)
         print(f"{fraction} in lowest terms is {answer}")
         choice = user_continue() #user choice (if they want to continue)
