@@ -10,32 +10,18 @@ def user_input(): #Asks user for an input
             count_divide = 0 #counts the number of "/"
             count_num = 0 #counts the number of invalid characters
             fraction = input("Enter a positive fraction in the format 'n/d': ") #user input
-            for i in range (len(fraction)): #check each value of the fraction
-                if fraction[i] == "/": #if a character is"/""
-                    count_divide +=1 #add one to the count
-                #checks if each value is an integer or not
-                try: 
-                    int(fraction[i]) #converts characters to integer
-                except:
-                    count_num +=1 #if a character is not an integer, add one to the count
-                        
-            if count_divide == 1: #if only one "/" exists
-                if count_num == 1: #if only 1 invalid characters exists, the "/" in the user input
-                    return fraction #if both conditions are true, return the value
-        except: #if its not valid
-            print("Enter a proper value")
-    
-def numbers(fraction): #returns the integers in the user input
-    num = list(fraction.rstrip()) #coversts user input into a list
-    n = "" #numerator
-    d = "" #denominator
-    for i in range (len(num)): #for the length of the list 
-        if num[i] == "/": #checks where the "/" is 
-            for y in range (i): #every characters before the "/"
-                n += num[y] #adds it to the numerator string
-            for m in range ((i+1), (len(num))): #every character after the "/"
-                d += num[m] #adds it to the denominator string
-    return int(n), int(d) #returns numerator and denominator as a integer
+            if "/" in fraction:
+                fraction = fraction.split("/")
+                numerator = int(fraction[0])
+                denominator = int(fraction [1])
+                if numerator > 0 and denominator > 0:
+                    return numerator, denominator
+                else:
+                    print("Enter a valid input")
+            else:
+                print("Enter a valid input")
+        except:
+            print("Enter a valid input")
 
 def greatest_common_divisor(n, d): #finds the gcd of the numerator and denominator; Euclid's algorithm
     if (d == 0): #if denominator is 0, numerator is gcd
@@ -64,10 +50,9 @@ def user_continue(): #if user wants to continue or not
 def main(): #main function 
     while True: #while user wants to continue 
         fraction = user_input() #gets user input 
-        values = numbers(fraction) #gets the numerator and denominator
-        gcd = greatest_common_divisor(values[0], values[1]) #finds greatest common denominator
-        answer = lowest_terms(values[0], values[1], gcd) #gets the final answer
-        print(f"{fraction} in lowest terms is {answer}") #prints resulsts
+        gcd = greatest_common_divisor(fraction[0], fraction[1]) #finds greatest common denominator
+        answer = lowest_terms(fraction[0], fraction[1], gcd) #gets the final answer
+        print(f"{fraction[0]}/{fraction[1]} in lowest terms is {answer}") #prints resulsts
         choice = user_continue() #user choice (if they want to continue)
         if choice == "n" or choice == "no": #if user does not want to continue
             print("Thank you for using the program") 
