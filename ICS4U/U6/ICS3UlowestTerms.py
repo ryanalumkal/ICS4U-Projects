@@ -10,7 +10,7 @@ def user_input(): #Asks user for an input
             count_divide = 0 #counts the number of "/"
             count_num = 0 #counts the number of invalid characters
             fraction = input("Enter a positive fraction in the format 'n/d': ") #user input
-            if "/" in fraction:
+            if fraction.count("/") == 1:
                 fraction = fraction.split("/")
                 numerator = int(fraction[0])
                 denominator = int(fraction [1])
