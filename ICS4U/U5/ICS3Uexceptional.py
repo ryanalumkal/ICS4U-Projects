@@ -1,72 +1,78 @@
 # Name - Ryan Alumkal
 # Grade - 12
-# Description - States if a user-inputted number is within the exception of the standard deviation of a random value of 150 numbers
-# Date -  December 5, 2022
+# Description - Returns a user-inputted fraction in lowest terms 
+# Date -  1/12/2023
 
-#modules 
-import random 
 
-#user inputted number
-def user_input():
-    while True: #while input is invalid 
-        try:
-            value = int(input("Enter a number to calculate standard deviation: "))
-            if value > 0: #if value is valid 
-                return value
-            else:
-                print("Enter a correct value (Y/N)")
-        except:
-            print("Enter a correct value")	#if invalid 		
-
-#calculates standard deviation of the random 150 values 
-def standard_deviation(values): 
-    #variables 
-    num = 0
-    value = 0
-    squared_error = []
-
-    #calculates average of numbers 
-    for i in range(1,len(values)+1):
-        num += values[i-1]
-    u = num/len(values) #average
-    #calculates squared error between data points and the average 
-    for n in range(1,len(values)+1):
-        squared_error.append((values[n-1]-u)**2)
-    #finds average of the new value
-    for m in range(1,len(squared_error)+1):
-        value += squared_error[m-1]
-    v = value/len(values) #average
-    deviation = v **0.5 #final standard deviation
-
-    return u, deviation #returns average of the values and standard deviation
+def user_input(): #Asks user for an input    
+    while True:
+        try: #check if user input is valid
+            count_divide = 0 #counts the number of "/"
+            count_num = 0 #counts the number of invalid characters
+            fraction = input("Enter a positive fraction in the format 'n/d': ") #user input
+            for i in range (len(fraction)): #check each value of the fraction
+                if fraction[i] == "/": #if a character is"/""
+                    count_divide +=1 #add one to the count
+                #checks if each value is an integer or not
+                try: 
+                    int(fraction[i]) #converts characters to integer
+                except:
+                    count_num +=1 #if a character is not an integer, add one to the count
+                        
+            if count_divide == 1: #if only one "/" exists
+                if count_num == 1: #if only 1 invalid characters exists, the "/" in the user input
+                    return fraction #if both conditions are true, return the value
+        except: #if its not valid
+            print("Enter a proper value")
     
-def exception(u,deviation, value): #if the user-input is an exception or not
-    if (u+deviation)> value > (u-deviation): #if value is not an exception
-        print(f"Your value {value} is not an exception of {round(u,2)} with a standard deviation of {round(deviation,2)}")
-    else: #if a value is an exception
-        print(f"Your value {value} is an exception of {round(u,2)} with a standard deviation of {round(deviation,2)}")
-        	
-def main(): #main
-    while True: #while user wants to continue 
-        number = []
-        for i in range (150): #random 150 numbers
-            number.append(random.randint(25,75))
-        value = user_input() #user input 
-        nums = standard_deviation(number) #average of list number (num[0]) and standard deviation (num[1]) 
-        exception(nums[0], nums[1], value) #finds if value is an exception 
-        while True: #if user wants to end or continue program
-            try:
-                user_continue = input("Do you you want to continue (Y/N): ").lower()
-                if user_continue == "y" or user_continue == "n": #if valid 
-                    break
-                else:
-                    print("Enter a correct value (Y/N)")
-            except:
-                print("Enter a correct value (Y/N)")
-        if user_continue == "n": #if user wants to end program
-            print("Thank you for using the program")
-            break
+def numbers(fraction): #returns the integers in the user input
+    num = list(fraction.rstrip()) #coversts user input into a list
+    n = "" #numerator
+    d = "" #denominator
+    for i in range (len(num)): #for the length of the list 
+        if num[i] == "/": #checks where the "/" is 
+            for y in range (i): #every characters before the "/"
+                n += num[y] #adds it to the numerator string
+            for m in range ((i+1), (len(num))): #every character after the "/"
+                d += num[m] #adds it to the denominator string
+    return int(n), int(d) #returns numerator and denominator as a integer
 
-#main program
-if __name__ == "__main__": 
-    main()
+def greatest_common_divisor(n, d): #finds the gcd of the numerator and denominator; Euclid's algorithm
+    if (d == 0): #if denominator is 0, numerator is gcd
+        return n #returns numerator
+    else: #if not... 
+        return greatest_common_divisor(d, n %d) #returns denominator and the remainder of numerator and denominator back to the function
+
+def lowest_terms(n,d, gcd): #converts fraction into lowest terms 
+    numerator = int(n/gcd) #divides numerator by gcd
+    denominator = int(d/gcd) #divides denominator by gcd
+    answer = (str(numerator) + "/" + str(denominator)) #final answer in "n/d" format
+    return answer #returns answer 
+
+def user_continue(): #if user wants to continue or not 
+    while True: #loop
+        try:
+            option = input("Do you want to continue [Y/N]: ").lower()   #user choice 
+            if option == "y" or option == "yes" or option == "n" or option == "no": #if choice is valid 
+                break
+            else:
+                print("Enter a valid option [Y or N]") #if input is not valid 
+        except:
+            print("Enter a valid option [Y or N]") #if user input is not valid 
+    return option   
+
+def main(): #main function 
+    while True: #while user wants to continue 
+        fraction = user_input() #gets user input 
+        values = numbers(fraction) #gets the numerator and denominator
+        gcd = greatest_common_divisor(values[0], values[1]) #finds greatest common denominator
+        answer = lowest_terms(values[0], values[1], gcd) #gets the final answer
+        print(f"{fraction} in lowest terms is {answer}") #prints resulsts
+        choice = user_continue() #user choice (if they want to continue)
+        if choice == "n" or choice == "no": #if user does not want to continue
+            print("Thank you for using the program") 
+            break #ends program
+        
+#main program        
+if __name__ == "__main__":
+	main()
