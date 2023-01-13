@@ -7,20 +7,18 @@
 def user_input(): #Asks user for an input    
     while True:
         try: #check if user input is valid
-            count_divide = 0 #counts the number of "/"
-            count_num = 0 #counts the number of invalid characters
             fraction = input("Enter a positive fraction in the format 'n/d': ") #user input
-            if fraction.count("/") == 1:
-                fraction = fraction.split("/")
-                numerator = int(fraction[0])
-                denominator = int(fraction [1])
-                if numerator > 0 and denominator > 0:
-                    return numerator, denominator
-                else:
+            if fraction.count("/") == 1: #counts number of  "/"
+                fraction = fraction.split("/") #splits the fraction between the "/"
+                numerator = int(fraction[0]) #gets the numerator 
+                denominator = int(fraction [1]) #gets the denominator 
+                if numerator > 0 and denominator > 0: #checks if n and d and valid 
+                    return numerator, denominator #returns 
+                else: #if invalid n and d
                     print("Enter a valid input")
-            else:
+            else: #if more than one "/"
                 print("Enter a valid input")
-        except:
+        except: #if invalid input 
             print("Enter a valid input")
 
 def greatest_common_divisor(n, d): #finds the gcd of the numerator and denominator; Euclid's algorithm
@@ -52,7 +50,7 @@ def main(): #main function
         fraction = user_input() #gets user input 
         gcd = greatest_common_divisor(fraction[0], fraction[1]) #finds greatest common denominator
         answer = lowest_terms(fraction[0], fraction[1], gcd) #gets the final answer
-        print(f"{fraction[0]}/{fraction[1]} in lowest terms is {answer}") #prints resulsts
+        print(f"{fraction[0]}/{fraction[1]} in lowest terms is {answer}") #prints results 
         choice = user_continue() #user choice (if they want to continue)
         if choice == "n" or choice == "no": #if user does not want to continue
             print("Thank you for using the program") 
