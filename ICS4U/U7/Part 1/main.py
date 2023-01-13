@@ -48,7 +48,7 @@ def min_and_max(file):
 def main():
     while True:
         try:
-            file = open(r'U7/Part 1/studentdata.txt','r')
+            file = open(r'ICS4U/U7/Part 1/studentdata.txt','r')
             choice = user_choice()
             if choice == 1:
                 num_of_quiz(file)
