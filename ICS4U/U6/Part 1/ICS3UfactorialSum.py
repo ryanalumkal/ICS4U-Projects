@@ -19,7 +19,7 @@ def user_input(): #asks user for input
 			elif x < 0: #if value is 0 or less 
 				print("Enter a correct input")
 			
-		except:
+		except: # if invalid input 
 			print("Enter a proper value")
 			
 def user_continue(): #if user wants to continue or not 
