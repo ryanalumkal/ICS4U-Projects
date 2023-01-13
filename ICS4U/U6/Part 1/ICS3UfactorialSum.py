@@ -11,13 +11,14 @@ def user_input(): #asks user for input
 	while True:
 		try: #checks if user input is correct
 			x = int(input("Enter a number (enter 0 to stop): ")) #asks user input
-			if x >= 0: #if value is greater or equal to 0 (equal to 0 used when user only inputs 0 and no other value)
-				nums.append(x) #adds to the list "nums"
+			if x >= 0: #if value is greater than 0
+				if x == 0: #if value is 0
+					return nums
+				else:
+					nums.append(x) #adds to the list "nums"
 			elif x < 0: #if value is 0 or less 
 				print("Enter a correct input")
-			if x == 0: #if value is 0
-				return nums
-				break
+			
 		except:
 			print("Enter a proper value")
 			
@@ -35,8 +36,12 @@ def user_continue(): #if user wants to continue or not
 	
 def main(): #main function
 	while True:
+		factorial_sum = 0 #variable to hold factorial sum
 		nums = user_input() #gets the user input 
-		print(f"The sum of the factorials is {calculations.factorial(nums)}") #ouputs user input using a module from calculations.py (attached file)
+		for i in range (len(nums)): #for every value given
+			factorial_value = calculations.factorial(nums[i]) #finds value of each integer's factorial
+			factorial_sum += factorial_value #adds the sums of the factorials 
+		print("The sum of the factorials of", [(str(nums[x]) + "!") for x in range(len(nums))]," is ",factorial_sum) #prints answer
 		choice = user_continue() #user choice (if they want to continue)
 		if choice == "n" or choice == "no": #if user does not want to continue
 			print("Thank you for using the program") 
