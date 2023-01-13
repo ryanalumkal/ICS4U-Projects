@@ -29,19 +29,19 @@ def quiz_average(file):
         values = []
         values = line.split()
         name = values[0]
-        for i in range (len(values[1:])):
+        for i in range (1,len(values)):
             total += int(values[i])
         average = total/i
         print(f"The average of {name}'s quiz scores is {average:.2f}")
 
 
-def min_and_max(file): #Sue's output is incorrect because the value "8" only has 1 digit compared to the others with 2 digits 
+def min_and_max(file): 
     for line in file.readlines():
         values = []
         values = line.split()
         name = values[0]
-        minimum = min(values[1:])
-        maximum= max(values[1:])
+        minimum = min(values[1:], key=int)
+        maximum= max(values[1:], key=int)
         print(f"{name}'s minimum quiz score was {minimum} and maximum score was {maximum}")
        
 
