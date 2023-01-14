@@ -65,9 +65,10 @@ def over_three_hundred_passes(file):
     print(f"The number of players that have completed over 300 passes is {count}")
 
 def main():
-    while True:
-        file = open(r'ICS4U/U7/Part 2/qbdata.txt','r')
-        try:
+    
+    try:
+        while True:
+            file = open(r'ICS4U/U7/Part 2/qbdata.txt','r')
             choice = user_choice()
             if choice == 1:
                 print("\nFirst name, last name, and passer rate: ")
@@ -87,8 +88,8 @@ def main():
             if choice == 6:
                 print("Thank you for using the program")
                 break
-        finally:
-            file.close()
+    finally:
+        file.close()
     
 if __name__ == "__main__":
     main()
