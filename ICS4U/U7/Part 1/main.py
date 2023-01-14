@@ -5,13 +5,14 @@
 
 def user_choice():
     print("\n(1)Find the students with more than 6 quiz scores \n(2) Calculate the average grade for each student \n(3) Calculate the minimum and maximum score for each student\n(4) End the program")
+    #while True:
     try:
         choice = int(input("What choice do you want? (Enter a value between 1 to 4): "))
         if choice != 1 and choice != 2 and choice !=3 and choice !=4:
-            print("Enter a proper value1")
+            print("Enter a proper value")
         return choice
     except:
-        print("Enter a proper value2")
+        print("Enter a proper value")
 def num_of_quiz(file):
     for line in file.readlines():
                 count = 0
@@ -47,8 +48,8 @@ def min_and_max(file):
 
 def main():
     while True:
+        file = open(r'ICS4U/U7/Part 1/studentdata.txt','r')
         try:
-            file = open(r'ICS4U/U7/Part 1/studentdata.txt','r')
             choice = user_choice()
             if choice == 1:
                 num_of_quiz(file)
@@ -59,7 +60,6 @@ def main():
             elif choice == 4:
                 print("Thank you for using the program")
                 break
-            
         finally:
             file.close()
 
