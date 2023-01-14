@@ -85,7 +85,7 @@ def main():
                 print("\nNumber of players that have completed over 300 passes:")
                 over_three_hundred_passes(file)
             if choice == 6: #ends program
-                print("Thank you for using the program")
+                print("\nThank you for using the program")
                 break
     finally:
         file.close() #closes file 
