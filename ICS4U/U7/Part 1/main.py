@@ -17,8 +17,8 @@ def user_choice(): #asks user for what information they want
             print("\nEnter a proper value")
     return choice #returns choice 
 
-def num_of_quiz(file): #finds students with more than 6 quiz scores 
-    for line in file.readlines(): #reads every line in "studentdata.txt"
+def num_of_quiz(data): #finds students with more than 6 quiz scores 
+    for line in data: #reads every line in "studentdata.txt"
         count = 0 #counter for the # of quizes 
         values = line.split() #gets the different values, creates a list
         name = values[0] #gets name of student
@@ -27,8 +27,8 @@ def num_of_quiz(file): #finds students with more than 6 quiz scores
         if count > 6: #if quiz count is greater than 6
             print(f"\n{name} has more than 6 quiz scores at {count} scores") #prints student names with more than 6 quizzes along with # of quizzes 
 
-def quiz_average(file):# finds average grade for each student 
-    for line in file.readlines(): #reads every line in "studentdata.txt"
+def quiz_average(data):# finds average grade for each student 
+    for line in data: #reads every line in "studentdata.txt"
         total = 0
         values = line.split() #gets the different values, creates a list
         name = values[0] #gets name of student
@@ -38,8 +38,8 @@ def quiz_average(file):# finds average grade for each student
         print(f"\nThe average of {name}'s quiz scores is {average:.2f}") #prints name and average of each student 
 
 
-def min_and_max(file): 
-    for line in file.readlines(): #reads every line in "studentdata.txt"
+def min_and_max(data): 
+    for line in data: #reads every line in "studentdata.txt"
         values = line.split() #gets the different values, creates a list
         name = values[0] #gets name of student
         minimum = min(values[1:], key=int) #finds minimum integer in each entry after the name
@@ -49,23 +49,26 @@ def min_and_max(file):
 #main function
 def main():
     try:
-        while True: #while user wants to run program
-            file = open(r'ICS4U/U7/Part 1/studentdata.txt','r') #opens file "studentdata.txt"; includes path
-            choice = user_choice() #gets user choice 
-            if choice == 1: #prints students with more than 6 quiz scores
-                print("\nStudents with more than 6 quiz scores:")
-                num_of_quiz(file)
-            elif choice == 2: #prints average scores for each student
-                print("\nAverage scores for each student:")
-                quiz_average(file)
-            elif choice == 3: #prints minimum and Maximum score for each student
-                print("\nMinimum and Maximum score for each student:")
-                min_and_max(file)
-            elif choice == 4: #if user wants to end program
-                print("\nThank you for using the program")
-                break
+        file = open(r'ICS4U/U7/Part 1/studentdata.txt','r') #opens file "studentdata.txt"; includes path
+        data = file.readlines() #gets data from file
     finally:
         file.close() #closes file 
+
+    while True: #while user wants to run program
+        choice = user_choice() #gets user choice 
+        if choice == 1: #prints students with more than 6 quiz scores
+            print("\nStudents with more than 6 quiz scores:")
+            num_of_quiz(data)
+        elif choice == 2: #prints average scores for each student
+            print("\nAverage scores for each student:")
+            quiz_average(data)
+        elif choice == 3: #prints minimum and Maximum score for each student
+            print("\nMinimum and Maximum score for each student:")
+            min_and_max(data)
+        elif choice == 4: #if user wants to end program
+            print("\nThank you for using the program")
+            break
+    
 
 #main program 
 if __name__ == "__main__": 
