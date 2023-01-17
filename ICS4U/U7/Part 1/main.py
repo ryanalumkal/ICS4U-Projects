@@ -49,7 +49,7 @@ def min_and_max(data):
 #main function
 def main():
     try:
-        file = open(r'ICS4U/U7/Part 1/studentdata.txt','r') #opens file "studentdata.txt"; includes path
+        file = open(r'studentdata.txt','r') #opens file "studentdata.txt"; includes path
         data = file.readlines() #gets data from file
     finally:
         file.close() #closes file 
