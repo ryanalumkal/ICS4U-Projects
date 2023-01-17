@@ -1,7 +1,7 @@
 # Name - Ryan Alumkal
 # Grade - 12
 # Description - Scrapes data from a list of student data. Asks the user what information they want and prints the information
-# Date -  
+# Date -  1/16/2023
 
 #functions
 def user_choice(): #asks user for what information they want 
@@ -73,4 +73,3 @@ def main():
 #main program 
 if __name__ == "__main__": 
     main()
-

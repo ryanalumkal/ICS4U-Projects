@@ -1,7 +1,7 @@
 # Name - Ryan Alumkal
 # Grade - 12
 # Description - Scrapes QB information from a pre-determined data set. Asks user for what information they need and prints them out
-# Date -  
+# Date -  1/16/2023
 
 #functions 
 def user_choice():#asks user for what information they want 
@@ -52,16 +52,18 @@ def average_num_of_yards(data): #finds average number of yards completed per pas
         first_name = values[0] #gets first name
         last_name = values[1] #gets last name
         average = round((int(values[6])/int(values[4])),2) #finds average: yards/completions
-        print(f"\n{first_name} {last_name} has an average number of yards per completed pass of {average}") #prints result
+        print(f"\n{last_name}, {first_name} has an average number of yards per completed pass of {average}") #prints result
 
 def over_three_hundred_passes(data): #finds # of players with over 300 completed passes 
-    count = 0 #counter 
-    for line in data: #reads every line in "qbdata.txt"
-            values = [] #variable for values
-            values = line.split() #gets the different values, creates a list
-            if int(values[4]) > 300: #if player completed passes is over 300
-                count +=1
-    print(f"The number of players that have completed over 300 passes is {count}") #prints results 
+	count = 0 #counter 
+	name = ''
+	for line in data: #reads every line in "qbdata.txt"
+		values = [] #variable for values
+		values = line.split() #gets the different values, creates a list
+		if int(values[4]) > 300: #if player completed passes is over 300
+			count +=1
+			name += str(values[:2]) + ", "
+	print(f"The number of players that have completed over 300 passes is {count}. These players are: {name}") #prints results 
 
 #main function
 def main():
