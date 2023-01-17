@@ -68,7 +68,7 @@ def over_three_hundred_passes(data): #finds # of players with over 300 completed
 #main function
 def main():
     try:
-        file = open(r'qbdata.txt','r') #opens file "studentdata.txt"; includes path
+        file = open(r'ICS4U/U7/Part 2/qbdata.txt','r') #opens file "studentdata.txt"; includes path
         data = file.readlines() #gets data from file
     finally:
         file.close() #closes file 
