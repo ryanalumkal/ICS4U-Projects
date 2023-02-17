@@ -16,9 +16,9 @@ class Circle: #Circle class
         c1_area = (math.pi*self.r**2)
         c2_area = (math.pi*c2.r**2)
         if c1_area > c2_area: 
-            return c2_area #if c2 is smaller, return this
+            return "Circle 2", c2_area #if c2 is smaller, return this
         else:
-            return c1_area #if c2 is larger or equal to c1, return c1
+            return "Circle 1 ", c1_area #if c2 is larger or equal to c1, return c1
 
 def user_input(): #gets circle measurements 
     while True: #while invalid
@@ -50,7 +50,7 @@ def main(): #main function
     area_of_circle2 = c2.area_circle() #gets area of circle 2
     print(f"The area of the circle 2 is {round(area_of_circle2,2)}")
     c3 = c1.smaller(c2) #finds the smaller circle
-    print(f"The smaller circle has a radius of {round(c3,2)}") #prints result
+    print(f"{c3[0]} has a radius of {round(c3[1],2)}") #prints result
 
 #main program
 if __name__ == "__main__": 
