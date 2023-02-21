@@ -50,7 +50,7 @@ def main(): #main function
     area_of_circle2 = c2.area_circle() #gets area of circle 2
     print(f"The area of the circle 2 is {round(area_of_circle2,2)}")
     c3 = c1.smaller(c2) #finds the smaller circle
-    print(f"{c3[0]} has a radius of {round(c3[1],2)}") #prints result
+    print(f"The smaller circle, c3, {c3[0]}, has an area of {round(c3[1],2)}") #prints result
 
 #main program
 if __name__ == "__main__": 
