@@ -1,7 +1,7 @@
 # Name - Ryan Alumkal
 # Grade - 12
 # Description - Returns area of 2 circles, finds the smaller circle
-# Date - 2/20/2023
+# Date - 2/21/2023
 
 import math
 
