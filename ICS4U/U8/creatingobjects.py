@@ -14,7 +14,7 @@ def user_input(): #asks user for the numbers for different fractions
             f1_fraction_denominator = int(input("For the fraction 'f1', enter the denominator: "))
             f2_fraction_numerator = int(input("For the fraction 'f2', enter the numerator: "))
             f2_fraction_denominator = int(input("For the fraction 'f2', enter the denominator: "))
-            if f1_fraction_numerator >=0 and f1_fraction_denominator >0 and f2_fraction_numerator >=0 and f2_fraction_denominator >0:
+            if f1_fraction_denominator !=0 and f2_fraction_denominator !=0:
                 return f1_fraction_numerator,f1_fraction_denominator, f2_fraction_numerator, f2_fraction_denominator
             else:
                 print("Invalid input(s), enter a value greater than or equal to 0 for the numerators and a value greater than 0 for denominators")
