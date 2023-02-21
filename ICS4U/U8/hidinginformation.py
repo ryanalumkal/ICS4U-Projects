@@ -1,7 +1,7 @@
 # Name - Ryan Alumkal
 # Grade - 12
 # Description - Takes three float paraments, coordinates and radius, and converts radius to positive if negative
-# Date - 2/20/2023
+# Date - 2/21/2023
 
 class Circle: #circle class
     def __init__(self,xcoordinate,ycoordinate, radius): #method 
