@@ -32,7 +32,7 @@ def main(): #main function
     values = user_input() #gets user input
     c1 = Circle(values[0],values[1],values[2]) 
     values = c1.get_values() #gets new values
-    print(values[0], values[1], values[2]) #prints values
+    print(f"X-coordinate: {values[0]}, y-coordinate: {values[1]}, radius: {values[2]}") #prints values
 
 #main program
 if __name__ == "__main__":
