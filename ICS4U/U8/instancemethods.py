@@ -27,12 +27,15 @@ def user_input(): #gets circle measurements
             x = float(input("Enter the x coordinate of the circle: "))
             y = float(input("Enter the y coordinate of the circle: "))
             r = float(input("Enter the radius of the circle: "))
-            if r != 0: #if valid
+            if r != 0: #if radius is valid
                 return x,y,r
+            else: #if radius is invalid
+                print("Enter a proper float value for radius (not equal to 0)")
         except: #if invalid
             print("Enter a proper float value")
 def main(): #main function
     values1 = user_input() #gets values of circle 1
+
     #assigns values of circle 1
     c1 = Circle()
     c1.x = values1[0]
@@ -42,6 +45,7 @@ def main(): #main function
     print(f"The area of the circle 1 is {round(area_of_circle1,2)}")
 
     values2 = user_input() #gets values of circle 2
+
     #assigns values of circle 2
     c2 = Circle()
     c2.x = values2[0]
@@ -49,8 +53,10 @@ def main(): #main function
     c2.r = values2[2]
     area_of_circle2 = c2.area_circle() #gets area of circle 2
     print(f"The area of the circle 2 is {round(area_of_circle2,2)}")
+   
+    #assigns c3 to the smaller of the circles between c1 and c2, c1 if both have same area
     c3 = c1.smaller(c2) #finds the smaller circle
-    print(f"The smaller circle, c3, {c3[0]}, has an area of {round(c3[1],2)}") #prints result
+    print(f"The smaller circle c3 ({c3[0]}) has an area of {round(c3[1],2)}") #prints result
 
 #main program
 if __name__ == "__main__": 

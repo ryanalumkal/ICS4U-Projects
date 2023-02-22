@@ -21,10 +21,10 @@ def user_input(): #gets user inputs: x and y coordinate and radius
             x = float(input("Enter the x coordinate of the circle: "))
             y = float(input("Enter the y coordinate of the circle: "))
             r = float(input("Enter the radius of the circle: "))
-            if r !=0: #if user input is not 0 (positive or negative)
+            if r !=0: #if user input radius is not 0 (positive or negative)
                 return x,y,r
-            else: #if invalid
-                print("Enter a proper float value")
+            else: #if radius is invalid
+                print("Enter a proper float value for radius (not equal to 0)")
         except: #if invalid
             print("Enter a proper float value")
 

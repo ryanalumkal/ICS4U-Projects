@@ -85,9 +85,9 @@ def main(): #main function
                 sum_f1_f2(f1,f2)
             elif choice ==5: #if user wants to make f1 equal to absolute value of f1
                 absolute_f1(f1) 
-            elif choice == 6 or choice ==7: #ends program
+            elif choice == 6 or choice ==7: #if user inputs either 6 or 7
                 break
-        if choice == 7:
+        if choice == 7: #if user inputs six, the loop starts from the top, if 7, ends program
             print("\nThank you for using the program")
             break
 
