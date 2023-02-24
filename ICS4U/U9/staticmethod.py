@@ -1,35 +1,46 @@
+# Name - Ryan Alumkal
+# Grade - 12
+# Description - Asks user for desired input, the displays the results using Fraction class and static method
+# Date - 2/27/2023
+
+
+import math
+
+#class
 class Fraction:
 
     @staticmethod
-    def product(f1numerator, f1denominator, f2numerator, f2denominator): #product method
+    def product(fraction1, fraction2: object) ->object: #product method
+
+        #assigns values
+        f1numerator = int(fraction1.split('/')[0])
+        f1denominator = int(fraction1.split('/')[1])
+        f2numerator = int(fraction2.split('/')[0])
+        f2denominator = int(fraction2.split('/')[1])
         ans_numerator= f1numerator *f2numerator #unsimplified numerator
         ans_denominator = f1denominator *f2denominator #unsimplified denominator
 
-        n_placeholder = ans_numerator #placeholder numerator for gcd calculations 
-        d_placeholder = ans_denominator #placeholder denominator for gcd calculations
-
-        #to find lowest term factor
-        while True: #loops till greatest common factor is found
-            if d_placeholder == 0: #if denominator is 0, numerator is gcd
-                gcd = n_placeholder #greatest common denominator
-                break
-            else:  #if not... 
-                n_placeholder = d_placeholder #replaces numerator with previous denominator 
-                d_placeholder = n_placeholder%d_placeholder #new denominator is remainder of numerator and denominator
-                
-        numerator = int(ans_numerator/gcd) #divides numerator by gcd, simplified umerator
+        gcd = math.gcd(ans_numerator, ans_denominator) #finds greated common denominator
+        numerator = int(ans_numerator/gcd) #divides numerator by gcd, simplified numerator
         denominator = int(ans_denominator/gcd) #divides denominator by gcd, simplified denominator
-        return numerator, denominator #returns values of fraction 
+        return (f"{str(numerator)}/{str(denominator)}") #returns value of fraction 
     
     @staticmethod
-    def asbsolute(f1numerator, f1denominator): #absolute method 
-        return abs(f1numerator), abs(f1denominator) #returns absolute value of numerator and denominator 
+    def absolute(fraction1: object) ->object: #absolute method 
+        f1numerator = int(fraction1.split('/')[0])
+        f1denominator = int(fraction1.split('/')[1])
+        abs_fraction = str(abs(f1numerator))+"/"+ str(abs(f1denominator))
+        return abs_fraction #returns absolute value of numerator and denominator 
     
     @staticmethod
-    def is_positive(f1numerator, f1denominator): #is_positive method
+    def is_positive(fraction1: object) ->object: #is_positive method
+        f1numerator = int(fraction1.split('/')[0])
+        f1denominator = int(fraction1.split('/')[1])
         if f1numerator == 0: #if numerator is 0, it is neither positive or negative 
-            return "1neither true or false"
-        elif f1numerator > 0 and f1denominator > 0: #if numerator AND denomiator is positive, return true 
+            return "neither true or false"
+        elif f1numerator > 0 and f1denominator > 0: #if numerator AND denominator is positive, return true 
+            return True
+        elif f1numerator <0 and f1denominator <0: #both are negative, cancels out
             return True
         else: #if fraction is negative, return false 
             return False
@@ -37,13 +48,11 @@ class Fraction:
 def user_input_choice_1(): #asks user for the numbers for 2 different fractions 
     while True:
         try:
-            numerator1 = int(input("\nEnter the numerator of fraction 1: "))
-            denominator1 = int(input("Enter the denominator of fraction 1: "))
-            numerator2 = int(input("Enter the numerator of fraction 2: "))
-            denominator2 = int(input("Enter the denominator of fraction 2: "))
-            if denominator1 !=0 and denominator2 !=0:
-                return numerator1, denominator1, numerator2, denominator2
-            else:
+            fraction1 = input("Enter a fraction in format 'n/d': ")
+            fraction2 = input("Enter another fraction in format 'n/d': ")
+            if fraction1.split('/')[1] !=0 and fraction2.split('/')[1]: #if inputs are valid, denominators are not 0
+                return fraction1, fraction2
+            else: #if not...
                 print("Invalid input(s), enter a value greater than or equal to 0 for the numerators and a value greater than 0 for denominators")
         except: #if user input is invalid
             print("Enter a valid integer input")
@@ -51,11 +60,10 @@ def user_input_choice_1(): #asks user for the numbers for 2 different fractions
 def user_input_choice_2_and_3(): #asks user for the numbers for 1 fraction
     while True:
         try:
-            numerator1 = int(input("\nEnter the numerator of fraction 1: "))
-            denominator1 = int(input("Enter the denominator of fraction 1: "))
-            if denominator1 !=0:
-                return numerator1, denominator1
-            else:
+           fraction1 = input("Enter a fraction in format 'n/d': ")
+           if fraction1.split('/')[1] !=0: #if inputs are valid, denominator is not 0
+                return fraction1
+           else:
                 print("Invalid input(s), enter a value greater than or equal to 0 for the numerators and a value greater than 0 for denominators")
         except: #if user input is invalid
             print("Enter a valid integer input")
@@ -76,20 +84,20 @@ def user_choice(): #what user wants to perform
 def main():
     while True:
         choice = user_choice()
-        if choice ==1:
-            f1numerator, f1denominator, f2numerator, f2denominator = user_input_choice_1()
-            result_numerator, result_denominator = Fraction.product(f1numerator, f1denominator, f2numerator, f2denominator)
-            print(f"The product of the two fractions is {result_numerator}/{result_denominator}")
+        if choice ==1: #if user wants to find product of two fractions 
+            fraction1, fraction2 = user_input_choice_1()
+            result = Fraction.product(fraction1, fraction2)
+            print(f"The product of the two fractions is {result}")
       
-        elif choice ==2:
-            f1numerator, f1denominator = user_input_choice_2_and_3()
-            result_numerator, result_denominator = Fraction.asbsolute(f1numerator, f1denominator)
-            print(f"The absolute value of {f1numerator}/{f1denominator} is {result_numerator}/{result_denominator}")
+        elif choice ==2: #if user wants to find absolute value of one fraction
+            fraction1 = user_input_choice_2_and_3()
+            result = Fraction.absolute(fraction1)
+            print(f"The absolute value of {fraction1} is {result}")
       
-        elif choice ==3:
-            f1numerator, f1denominator = user_input_choice_2_and_3()
-            result_true_or_false = Fraction.is_positive(f1numerator, f1denominator)
-            print(f"It is {str(result_true_or_false).lower()} that fraction {f1numerator}/{f1denominator} is a positive fraction")
+        elif choice ==3: #if user wants to find if a fraction is positive or negative
+            fraction1 = user_input_choice_2_and_3()
+            result = Fraction.is_positive(fraction1)
+            print(f"It is {str(result).lower()} that fraction {fraction1} is a positive fraction")
       
         elif choice ==4:
             print("Thank you for using the program")
