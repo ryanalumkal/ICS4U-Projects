@@ -11,5 +11,5 @@ Projects from high school(Grade 12) computer science course.
 - [U6](https://github.com/ryanalumkal/ICS4U-Projects/tree/main/ICS4U/U6)
 - [U7](https://github.com/ryanalumkal/ICS4U-Projects/tree/main/ICS4U/U7)
 - [U8](https://github.com/ryanalumkal/ICS4U-Projects/tree/main/ICS4U/U8)
-- U9
+- [U9](https://github.com/ryanalumkal/ICS4U-Projects/tree/main/ICS4U/U9)
 - U10 - 11(Stock Market Analysis)
