@@ -33,30 +33,47 @@ def user_input(): #gets circle measurements
                 print("Enter a proper float value for radius (not equal to 0)")
         except: #if invalid
             print("Enter a proper float value")
+
+def user_choice(): #what user wants to perform
+    while True: 
+        try: #while user input is invalid
+            choice = int(input("\nEnter 1 to continue or 2 to end the program: ")) #user input
+            if choice == 1 or choice == 2: #if valid
+                return choice
+            else: #if invalid
+                print("Enter a proper integer value")
+        except: #if invalid 
+            print("Enter a proper integer value")
+
 def main(): #main function
-    values1 = user_input() #gets values of circle 1
+    while True:
+        values1 = user_input() #gets values of circle 1
 
-    #assigns values of circle 1
-    c1 = Circle()
-    c1.x = values1[0]
-    c1.y = values1[1]
-    c1.r = values1[2]
-    area_of_circle1 = c1.area_circle() #gets area of circle 1
-    print(f"The area of the circle 1 is {round(area_of_circle1,2)}")
+        #assigns values of circle 1
+        c1 = Circle()
+        c1.x = values1[0]
+        c1.y = values1[1]
+        c1.r = values1[2]
+        area_of_circle1 = c1.area_circle() #gets area of circle 1
+        print(f"The area of the circle 1 is {round(area_of_circle1,2)}")
 
-    values2 = user_input() #gets values of circle 2
+        values2 = user_input() #gets values of circle 2
 
-    #assigns values of circle 2
-    c2 = Circle()
-    c2.x = values2[0]
-    c2.y = values2[1]
-    c2.r = values2[2]
-    area_of_circle2 = c2.area_circle() #gets area of circle 2
-    print(f"The area of the circle 2 is {round(area_of_circle2,2)}")
-   
-    #assigns c3 to the smaller of the circles between c1 and c2, c1 if both have same area
-    c3 = c1.smaller(c2) #finds the smaller circle
-    print(f"The smaller circle c3 ({c3[0]}) has an area of {round(c3[1],2)}") #prints result
+        #assigns values of circle 2
+        c2 = Circle()
+        c2.x = values2[0]
+        c2.y = values2[1]
+        c2.r = values2[2]
+        area_of_circle2 = c2.area_circle() #gets area of circle 2
+        print(f"The area of the circle 2 is {round(area_of_circle2,2)}")
+    
+        #assigns c3 to the smaller of the circles between c1 and c2, c1 if both have same area
+        c3 = c1.smaller(c2) #finds the smaller circle
+        print(f"The smaller circle c3 ({c3[0]}) has an area of {round(c3[1],2)}") #prints result
+        choice = user_choice()
+        if choice ==2:
+            print("Thank you for using the program")
+            break
 
 #main program
 if __name__ == "__main__": 
