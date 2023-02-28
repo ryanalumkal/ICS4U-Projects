@@ -1,116 +1,96 @@
 # Name - Ryan Alumkal
 # Grade - 12
-# Description - Asks user for desired input, the displays the results using Fraction class and static method
-# Date - 2/27/2023
+# Description - Two objects f1 and f2 with type Fraction are created and assigned values. The program performs the tasks: a) Double the value of f1.b) Invert f2.c) Make f1 equal to the (unsimplified) product of f1 and f2.d) Make f2 equal to the (unsimplified) sum of f1 and f2.and e) Make f1 equal to ∣f1∣ (the absolute value of f1).
+# Date -  2/21/2023
 
+class Fraction: #Fraction class
+    num = 0 #numerator
+    den = 0 #denominator 
 
-import math
-
-#class
-class Fraction:
-
-    @staticmethod
-    def product(fraction1, fraction2: object) ->object: #product method
-
-        #assigns values
-        f1numerator = int(fraction1.split('/')[0])
-        f1denominator = int(fraction1.split('/')[1])
-        f2numerator = int(fraction2.split('/')[0])
-        f2denominator = int(fraction2.split('/')[1])
-        ans_numerator= f1numerator *f2numerator #unsimplified numerator
-        ans_denominator = f1denominator *f2denominator #unsimplified denominator
-
-        gcd = math.gcd(ans_numerator, ans_denominator) #finds greated common denominator
-        numerator = int(ans_numerator/gcd) #divides numerator by gcd, simplified numerator
-        denominator = int(ans_denominator/gcd) #divides denominator by gcd, simplified denominator
-        return (f"{str(numerator)}/{str(denominator)}") #returns value of fraction 
-    
-    @staticmethod
-    def absolute(fraction1: object) ->object: #absolute method 
-        #assigns values
-        f1numerator = int(fraction1.split('/')[0])
-        f1denominator = int(fraction1.split('/')[1])
-
-        abs_fraction = str(abs(f1numerator))+"/"+ str(abs(f1denominator)) #finds absolute value
-        return abs_fraction #returns absolute value of numerator and denominator 
-    
-    @staticmethod
-    def is_positive(fraction1: object) ->object: #is_positive method
-        #assigns values
-        f1numerator = int(fraction1.split('/')[0])
-        f1denominator = int(fraction1.split('/')[1])
-
-        if f1numerator == 0: #if numerator is 0, it is neither positive or negative 
-            return "neither true or false"
-        elif f1numerator > 0 and f1denominator > 0: #if numerator AND denominator is positive, return true 
-            return True
-        elif f1numerator <0 and f1denominator <0: #both are negative, cancels out
-            return True
-        else: #if fraction is negative, return false 
-            return False
-
-def user_input_choice_1(): #asks user for the numbers for 2 different fractions 
+def user_input(): #asks user for the numbers for different fractions
     while True:
         try:
-            #user input
-            fraction1 = input("Enter a fraction in format 'n/d': ")
-            fraction2 = input("Enter another fraction in format 'n/d': ")
-
-            if fraction1.split('/')[1] !=0 and fraction2.split('/')[1]: #if inputs are valid, denominators are not 0
-                return fraction1, fraction2
-            else: #if not...
+            f1_fraction_numerator = int(input("For the fraction 'f1', enter the numerator: "))
+            f1_fraction_denominator = int(input("For the fraction 'f1', enter the denominator: "))
+            f2_fraction_numerator = int(input("For the fraction 'f2', enter the numerator: "))
+            f2_fraction_denominator = int(input("For the fraction 'f2', enter the denominator: "))
+            if f1_fraction_denominator !=0 and f2_fraction_denominator !=0:
+                return f1_fraction_numerator,f1_fraction_denominator, f2_fraction_numerator, f2_fraction_denominator
+            else:
                 print("Invalid input(s), enter a value greater than or equal to 0 for the numerators and a value greater than 0 for denominators")
         except: #if user input is invalid
             print("Enter a valid integer input")
-
-def user_input_choice_2_and_3(): #asks user for the numbers for 1 fraction
-    while True:
-        try:
-           #user input
-           fraction1 = input("Enter a fraction in format 'n/d': ")
-           
-           if fraction1.split('/')[1] !=0: #if inputs are valid, denominator is not 0
-                return fraction1
-           else:
-                print("Invalid input(s), enter a value greater than or equal to 0 for the numerators and a value greater than 0 for denominators")
-        except: #if user input is invalid
-            print("Enter a valid integer input")
+    
 
 def user_choice(): #what user wants to perform
     while True: 
-        print("\n1) Find the product \n2) Absolute value of faction \n3) Find if the fraction is positive or not \n4) Enter new value") #prints choices
+        print("\n1) Double the value of f1\n2) Invert f2 \n3) Make f1 equal to the (unsimplified) product of f1 and f2 \n4) Make f2 equal to the (unsimplified) sum of f1 and f2 \n5) Make f1 equal to ∣f1∣ (the absolute value of f1)\n6) Enter new values \n7) End program") #prints choices
         try: #while user input is invalid
-            choice = int(input("\nEnter desired value (between 1 to 4): ")) #user input
-            if choice == 1 or choice == 2 or choice == 3 or choice ==4: #if valid
+            choice = int(input("\nEnter desired value (between 1 to 6): ")) #user input
+            if choice == 1 or choice == 2 or choice == 3 or choice ==4 or choice == 5 or choice ==6 or choice ==7: #if valid
                 return choice
             else: #if invalid
                 print("Enter a proper integer value")
         except: #if invalid 
             print("Enter a proper integer value")
+        
+def double_f1(f1): #doubles value of f1
+    f1.num*=2
+    print(f"\n{f1.num}/{f1.den}") #prints result
 
-#main function
-def main():
+def invert_f2(f2): #inverts value of f2
+    numerator = f2.num
+    f2.num = f2.den
+    f2.den = numerator
+    print(f"\n{f2.num}/{f2.den}") #prints result
+
+def product_f1_f2(f1,f2): #makes f1 equal to the product of f1 and f2
+    f1.num = f1.num * f2.num
+    f1.den = f1.den * f2.den
+    print(f"\n{f1.num}/{f1.den}") #prints result
+
+def sum_f1_f2(f1,f2): #makes f2 equal to the sum of f1 and f2
+    f2.num = (f1.num*f2.den) + (f2.num *f1.den)
+    f2.den = (f1.den*f2.den)
+    print(f"\n{f2.num}/{f2.den}") #prints result
+
+def absolute_f1(f1): #makes f1 equal to absolute value of f1
+    f1.num = abs(f1.num)
+    f1.den = abs(f1.den)
+    print(f"\n{f1.num}/{f1.den}") #prints result
+
+def main(): #main function
     while True:
-        choice = user_choice() #user choice
-        if choice ==1: #if user wants to find product of two fractions 
-            fraction1, fraction2 = user_input_choice_1()
-            result = Fraction.product(fraction1, fraction2)
-            print(f"The product of the two fractions is {result}") #prints result
-      
-        elif choice ==2: #if user wants to find absolute value of one fraction
-            fraction1 = user_input_choice_2_and_3()
-            result = Fraction.absolute(fraction1)
-            print(f"The absolute value of {fraction1} is {result}") #prints result
-      
-        elif choice ==3: #if user wants to find if a fraction is positive or negative
-            fraction1 = user_input_choice_2_and_3()
-            result = Fraction.is_positive(fraction1)
-            print(f"It is {str(result).lower()} that fraction {fraction1} is a positive fraction") #prints result
-      
-        elif choice ==4: #if user wants to end the program
-            print("Thank you for using the program")
+        values = user_input()
+        while True: #while user wants to continue 
+            f1_numerator = values[0]
+            f1_denominator = values[1]
+            f2_numerator = values[2]
+            f2_denominator = values[3]
+            f1 = Fraction() #defines f1
+            f1.num = f1_numerator #defines numerator
+            f1.den = f1_denominator #defines denominator 
+            f2 = Fraction() #defines f2
+            f2.num = f2_numerator #defines numerator
+            f2.den = f2_denominator #defines denominator 
+
+            choice = user_choice() #gets user choice 
+            if choice == 1: #if user wants to double value of f1
+                double_f1(f1)
+            elif choice ==2: #if user wants to invert value of f2
+                invert_f2(f2)
+            elif choice ==3: # if user wants to make f1 equal to the product of f1 and f2
+                product_f1_f2(f1,f2)
+            elif choice ==4: #if user wants to make f2 equal to the sum of f1 and f2
+                sum_f1_f2(f1,f2)
+            elif choice ==5: #if user wants to make f1 equal to absolute value of f1
+                absolute_f1(f1) 
+            elif choice == 6 or choice ==7: #if user inputs either 6 or 7
+                break
+        if choice == 7: #if user inputs six, the loop starts from the top, if 7, ends program
+            print("\nThank you for using the program")
             break
 
-#main program 
+#main program
 if __name__ == "__main__":
     main()
