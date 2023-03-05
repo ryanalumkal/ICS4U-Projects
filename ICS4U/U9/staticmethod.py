@@ -11,9 +11,6 @@ class Fraction:
     def __init__(self,numerator, denominator: int):
         self.num = numerator
         self.den = denominator
-
-    def get_values(self: int) ->int: #returns values
-        return self.num, self.den
     
     @staticmethod
     def product(f1, f2: object) ->object: #product method

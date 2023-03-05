@@ -8,21 +8,20 @@ import math
 
 class Circle: #Circle class
     def __init__(self,xcoordinate,ycoordinate, radius): #method 
-        self.x = xcoordinate #x coordinate of circle
-        self.y = ycoordinate#y coordinate of circle 
+        self.__x = xcoordinate #x coordinate of circle
+        self.__y = ycoordinate#y coordinate of circle 
         if radius > 0: #if radius is positive
-            self.r = radius #radius
+            self.__r = radius #radius
         else: #if negative, make positive
-            self.r = -radius
-
-    def get_values(self): #returns values 
-        return self.x, self.y, self.r
+            self.__r = -radius
+    def get_values(self):
+        return self.__x, self.__y, self.__r
 
     def area_circle(self): #calculates area of a circle
-        return (math.pi*self.r**2)
+        return (math.pi*self.__r**2)
     def smaller(self,c2): #finds which circle is smaller
-        c1_area = (math.pi*self.r**2)
-        c2_area = (math.pi*c2.r**2)
+        c1_area = (math.pi*self.__r**2)
+        c2_area = (math.pi*c2.__r**2)
         if c1_area > c2_area: 
             return "Circle 2", c2_area #if c2 is smaller, return this
         else:
