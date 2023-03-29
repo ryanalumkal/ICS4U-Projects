@@ -12,5 +12,5 @@ Projects from high school(Grade 12) computer science course.
 - [U7](https://github.com/ryanalumkal/ICS4U-Projects/tree/main/ICS4U/U7)
 - [U8](https://github.com/ryanalumkal/ICS4U-Projects/tree/main/ICS4U/U8)
 - [U9](https://github.com/ryanalumkal/ICS4U-Projects/tree/main/ICS4U/U9)
-- [U10 - 11](https://github.com/bytestock)
+- [U10 - 14](https://github.com/bytestock)
   - Links to organization that holds the code and information about the program
