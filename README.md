@@ -13,4 +13,7 @@ Projects from high school(Grade 12) computer science course.
 - [U8](https://github.com/ryanalumkal/ICS4U-Projects/tree/main/ICS4U/U8)
 - [U9](https://github.com/ryanalumkal/ICS4U-Projects/tree/main/ICS4U/U9)
 - [U10 - 14](https://github.com/bytestock)
-  - Links to organization that holds the code and information about the program
+  - Aims to track and predict stock
+- [U15 - Culminating Project](https://github.com/trackitward)
+  - Application that allows for the tracking of units
+  - Teacher interface and student interface for different needs
